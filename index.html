@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary SEO Tags -->
-  <title>ExcelWizPro – AI‑Powered Excel Automation Add‑In | Coming Soon</title>
-  <meta name="description" content="ExcelWizPro is the AI‑powered Excel productivity add‑in that automates formulas, cleans data, and boosts workflow efficiency. Register for early access and get your first month free." />
+  <title>ExcelWizPro – AI-Powered Excel Automation Add-In | Coming Soon</title>
+  <meta name="description" content="ExcelWizPro is the AI-powered Excel productivity add-in that automates formulas, cleans data, and boosts workflow efficiency. Register for early access and get your first month free." />
   <meta name="keywords" content="Excel add-in, Excel automation, AI Excel tool, Excel formula generator, Excel productivity, ExcelWizPro, Excel data cleaning, Excel shortcuts" />
   <meta name="author" content="ExcelWizPro" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="ExcelWizPro – AI‑Powered Excel Automation Add‑In" />
+  <meta property="og:title" content="ExcelWizPro – AI-Powered Excel Automation Add-In" />
   <meta property="og:description" content="Automate formulas, clean data, and enhance Excel workflows using AI. Get 1 month free when you register early." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.excelwizpro.com" />
@@ -20,7 +20,7 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ExcelWizPro – AI Excel Add‑In" />
+  <meta name="twitter:title" content="ExcelWizPro – AI Excel Add-In" />
   <meta name="twitter:description" content="Excel automation made simple. Sign up for early access and get 1 month free." />
 
   <!-- Structured Data -->
@@ -216,8 +216,8 @@ header {
     <img src="/assets/icon-64.png" alt="ExcelWizPro Logo" style="width:96px;height:96px;margin-bottom:25px;" />
     <img src="/assets/icon-64.png" alt="ExcelWizPro Logo" style="width:64px;height:64px;margin-bottom:20px;" />
     <h1>ExcelWizPro</h1>
-    <p class="subtitle">AI‑Powered Excel Automation — Coming Soon</p>
-    <p style="opacity:0.85;margin-top:8px;">A professional Excel add‑in built with a native Microsoft feel.</p>
+    <p class="subtitle">AI-Powered Excel Automation — Coming Soon</p>
+    <p style="opacity:0.85;margin-top:8px;">A professional Excel add-in built with a native Microsoft feel.</p>
   </header>
 
   <!-- Hero Art Section -->
@@ -228,8 +228,8 @@ header {
   <div class="container">
     <div class="signup-box">
       <h2>Get 1 Month Free on Release</h2>
-      <p>Register early and be among the first to experience AI‑driven Excel automation.</p>
-      <form action="https://your-email-handler.com/register" method="POST">
+      <p>Register early and be among the first to experience AI-driven Excel automation.</p>
+      <form id="waitlist-form">
         <input type="email" name="email" placeholder="Enter your email" required />
         <br>
         <button type="submit" style="margin-top:10px;">Join the Waitlist</button>
@@ -268,5 +268,42 @@ header {
     © 2025 ExcelWizPro. All rights reserved.<br>
     ExcelWizPro is an independent product and is not affiliated with Microsoft Corporation.
   </footer>
+
+  <!-- Email capture script -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("waitlist-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const emailInput = form.querySelector("input[name='email']");
+      const email = emailInput.value.trim();
+
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
+
+      try {
+        const res = await fetch("https://excelwizpro-finalapi.onrender.com/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+        alert(data.message || "Done!");
+
+        if (data.success) {
+          form.reset();
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong. Please try again.");
+      }
+    });
+  });
+  </script>
 </body>
 </html>
