@@ -7,194 +7,221 @@
 
   <!-- Primary SEO Tags -->
   <title>ExcelWizPro – AI-Powered Excel Automation Add-In | Coming Soon</title>
-  <meta name="description" content="ExcelWizPro is the AI-powered Excel productivity add-in that automates formulas, cleans data, and boosts workflow efficiency. Register for early access and get your first month free." />
-  <meta name="keywords" content="Excel add-in, Excel automation, AI Excel tool, Excel formula generator, Excel productivity, ExcelWizPro, Excel data cleaning, Excel shortcuts" />
+  <meta name="description" content="ExcelWizPro is an AI-powered Excel add-in that automates formulas, cleans data, and speeds up data processing. Perfect for analysts, finance teams, and Excel power users." />
+  <meta name="keywords" content="Excel add-in, Excel automation, AI Excel tool, Excel formula generator, Excel productivity, ExcelWizPro, Excel data cleaning" />
   <meta name="author" content="ExcelWizPro" />
 
-<style>
-  :root {
-    --brand-blue: #003A8C;
-    --brand-blue-dark: #0D3D8F;
-    --brand-accent: #5684C9;
-    --brand-bg-light: #F1F4F8;
-    --brand-soft-blue: #9EADD4;
-    --brand-text: #1a1a1a;
-  }
+  <style>
+    :root {
+      --brand-blue: #003A8C;
+      --brand-blue-dark: #0D3D8F;
+      --brand-accent: #5684C9;
+      --brand-bg-light: #F1F4F8;
+      --brand-soft-blue: #9EADD4;
+      --brand-text: #1a1a1a;
+    }
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Segoe UI, Arial, sans-serif;
-    background: var(--brand-bg-light);
-    color: var(--brand-text);
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Segoe UI, Arial, sans-serif;
+      background: var(--brand-bg-light);
+      color: var(--brand-text);
+    }
 
-  header {
-    background: var(--brand-blue);
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-  }
+    header {
+      background: var(--brand-blue);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-  h1 { font-size: 3rem; margin: 0; }
-  p.subtitle { font-size: 1.25rem; opacity: 0.9; }
+    h1 { font-size: 3rem; margin: 0; }
+    p.subtitle { font-size: 1.25rem; opacity: 0.9; }
 
-  .container { max-width: 980px; margin: 40px auto; padding: 0 20px; }
+    .container { max-width: 980px; margin: 40px auto; padding: 0 20px; }
 
-  .signup-box {
-    background: white;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-    text-align: center;
-    border: 1px solid var(--brand-soft-blue);
-  }
+    .signup-box {
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+      text-align: center;
+      border: 1px solid var(--brand-soft-blue);
+    }
 
-  input[type="email"] {
-    width: 70%; padding: 14px; border-radius: 8px; border: 1px solid #ccc;
-  }
+    input[type="email"] {
+      width: 70%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
 
-  button {
-    padding: 14px 24px;
-    background: var(--brand-blue);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  button:hover { background: var(--brand-blue-dark); }
+    button {
+      padding: 14px 24px;
+      background: var(--brand-blue);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover { background: var(--brand-blue-dark); }
 
-  .features {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-  }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
 
-  .feature-card {
-    background: white;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    border: 1px solid var(--brand-soft-blue);
-    transition: 0.25s ease;
-  }
+    .feature-card {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--brand-soft-blue);
+      transition: 0.25s ease;
+      text-align: center;
+    }
 
-  .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-    border-color: var(--brand-accent);
-  }
+    .feature-card img {
+      width: 100%;
+      max-width: 140px;
+      height: 140px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
 
-  /* ✅ REAL FIX — images stay inside cards and scale down safely */
-  .feature-card img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 15px;
-  }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      border-color: var(--brand-accent);
+    }
 
-  footer {
-    text-align: center;
-    padding: 30px;
-    margin-top: 60px;
-    color: #555;
-  }
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+      color: #555;
+    }
 
-</style>
+    /* Trust boosters */
+    .trust {
+      max-width: 900px;
+      margin: 60px auto;
+      text-align: center;
+      color: #333;
+    }
 
+    .trust h3 {
+      color: var(--brand-blue);
+    }
+  </style>
 </head>
 
 <body>
+  <!-- ================= HEADER ================= -->
   <header>
     <img src="/assets/icon-64.png" alt="Logo" style="width:96px;height:96px;margin-bottom:20px;" />
     <h1>ExcelWizPro</h1>
     <p class="subtitle">AI-Powered Excel Automation — Coming Soon</p>
   </header>
 
-  <div style="text-align:center; margin:30px 0;">
-    <img src="/assets/hero.png" alt="Hero" style="max-width:100%; border-radius:12px;" />
-  </div>
-
-  <!-- SEO-rich description block -->
+  <!-- ================= BLURB ================= -->
   <section style="max-width:900px;margin:30px auto 40px;padding:20px;text-align:center;">
     <h2 style="color:var(--brand-blue);font-size:2rem;margin-bottom:10px;">What Is ExcelWizPro?</h2>
     <p style="font-size:1.1rem;line-height:1.6;max-width:800px;margin:0 auto;color:#333;">
-      ExcelWizPro is an AI-powered Excel add-in designed to automate formulas, accelerate data processing,
-      and eliminate repetitive spreadsheet tasks. Built for analysts, finance teams, accountants, and
-      everyday Excel users, it combines intelligent formula generation, automatic column mapping,
-      and one-click data cleaning. ExcelWizPro helps you work faster, reduce errors, and boost productivity
-      across reporting, forecasting, data transformation, and day-to-day spreadsheet workflows.
-      Optimised for performance and reliability, it delivers a native Excel experience enhanced with
-      next-generation AI automation.
+      ExcelWizPro is an AI-powered Excel add-in that automates formula creation, accelerates complex calculations,
+      and removes repetitive tasks. Built for analysts, finance professionals, accountants, and everyday users, 
+      ExcelWizPro boosts accuracy, eliminates manual work, and transforms how you manage data, reporting, 
+      forecasting, and day-to-day spreadsheet operations.
     </p>
   </section>
 
+  <!-- ================= SIGNUP ================= -->
   <div class="container">
     <div class="signup-box">
       <h2>Get 1 Month Free on Release</h2>
-      <p>Register early and be among the first to experience AI automation.</p>
+      <p>Join early to unlock AI-assisted Excel superpowers.</p>
       <form>
         <input type="email" placeholder="Enter your email" required />
         <br><button style="margin-top:10px;">Join the Waitlist</button>
       </form>
     </div>
+  </div>
 
+  <!-- ================= ACTUAL UI PREVIEW ================= -->
+  <div style="max-width:900px;margin:50px auto;padding:20px;text-align:center;">
+    <h2 style="color:var(--brand-blue);font-size:2rem;margin-bottom:20px;">Live Add-In Preview</h2>
+    <img src="/assets/ui-preview.png" alt="ExcelWizPro UI" style="max-width:100%;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.08);" />
+  </div>
+
+  <!-- ================= HERO IMAGE ================= -->
+  <div style="text-align:center; margin:30px 0;">
+    <img src="/assets/hero.png" alt="Hero" style="max-width:100%; border-radius:12px;" />
+  </div>
+
+  <!-- ================= FEATURES ================= -->
+  <div class="container">
     <h2 style="text-align:center;margin-top:60px;color:var(--brand-blue);font-size:2rem;">Powerful Features</h2>
 
     <div class="features">
       <div class="feature-card">
         <img src="/assets/feature-ai.png" alt="AI Formula Automation" />
         <h3>AI Formula Automation</h3>
-        <p>Instantly generate Excel formulas using natural language instructions.</p>
+        <p>Generate formulas instantly using natural language.</p>
       </div>
 
       <div class="feature-card">
-        <img src="/assets/feature-mapping.png" alt="Intelligent Column Mapping" />
+        <img src="/assets/feature-mapping.png" alt="Column Mapping" />
         <h3>Intelligent Column Mapping</h3>
-        <p>Automatically detect and match spreadsheet column names across sheets.</p>
+        <p>Automatically match and detect spreadsheet fields.</p>
       </div>
 
       <div class="feature-card">
         <img src="/assets/feature-backend.png" alt="Accelerated Processing" />
         <h3>Accelerated Processing</h3>
-        <p>Enjoy lightning-fast formula computation powered by a hybrid rules + AI engine.</p>
+        <p>Lightning-fast calculations powered by a hybrid AI engine.</p>
       </div>
 
       <div class="feature-card">
-        <img src="/assets/feature-cleaning.png" alt="One-Click Data Cleaning" />
+        <img src="/assets/feature-cleaning.png" alt="One-Click Cleaning" />
         <h3>One-Click Data Cleaning</h3>
-        <p>Fix formatting, remove duplicates and tidy messy data in a single click.</p>
+        <p>Fix formatting, remove duplicates, tidy data instantly.</p>
       </div>
     </div>
   </div>
 
+  <!-- ================= BLOG ================= -->
   <section id="blog" style="max-width:900px;margin:60px auto;padding:20px;">
     <h2 style="text-align:center;color:var(--brand-blue);font-size:2rem;">ExcelWizPro Blog</h2>
     <p style="text-align:center;max-width:700px;margin:0 auto 24px;">
-      Insights on AI-powered Excel workflows, automation tips, and productivity tricks for analysts, accountants, and power users.
+      Insights on AI-powered Excel workflows, automation strategies, and productivity techniques.
     </p>
-
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;">
       <div class="feature-card">
         <h3>How AI Transforms Excel Workflows</h3>
-        <p>See real examples of how AI reduces manual formula building and cuts repetitive work from hours to minutes.</p>
+        <p>Discover how AI eliminates manual formulas and accelerates analysis.</p>
       </div>
-
       <div class="feature-card">
         <h3>The Fastest Way to Generate Excel Formulas</h3>
-        <p>Learn how natural-language formula generation helps you avoid errors and move faster in complex spreadsheets.</p>
+        <p>Generate accurate formulas 10× faster with natural-language prompts.</p>
       </div>
-
       <div class="feature-card">
         <h3>10 Excel Tasks You Should Automate in 2025</h3>
-        <p>From data cleaning to reporting, discover the key tasks every modern Excel user should automate.</p>
+        <p>Save hours weekly by automating these common workflows.</p>
       </div>
     </div>
   </section>
 
+  <!-- ================= TRUST BOOSTERS ================= -->
+  <div class="trust">
+    <h3>Trusted by Analysts, Finance Teams & Excel Power Users</h3>
+    <p>Secure • No data stored • Enterprise-ready • Microsoft-focused architecture</p>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
   <footer>
     <img src="/assets/icon-64.png" style="width:48px;height:48px;" />
     <p>© 2025 ExcelWizPro — Not affiliated with Microsoft.</p>
@@ -216,15 +243,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailInput = form.querySelector("input[type='email']");
     const email = emailInput.value.trim();
 
-    if (!email) {
-      alert("Please enter your email address.");
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      alert("Please enter a valid email format (example: name@example.com).");
-      return;
-    }
+    if (!email) return alert("Please enter your email.");
+    if (!validateEmail(email)) return alert("Enter a valid email.");
 
     try {
       const res = await fetch("https://excelwizpro-finalapi.onrender.com/subscribe", {
@@ -235,13 +255,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await res.json();
       alert(data.message || "You're on the waitlist!");
-
-      if (data.success) {
-        form.reset();
-      }
+      if (data.success) form.reset();
     } catch (err) {
       console.error(err);
-      alert("Something went wrong. Please try again.");
+      alert("Something went wrong.");
     }
   });
 });
