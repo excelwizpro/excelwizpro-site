@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://excelwizpro.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://excelwizpro.com/#about</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://excelwizpro.com/#features</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://excelwizpro.com/#faq</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://excelwizpro.com/#how</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://excelwizpro.com/#comparison</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>
