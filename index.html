@@ -11,98 +11,100 @@
   <meta name="keywords" content="Excel add-in, Excel automation, AI Excel tool, Excel formula generator, Excel productivity, ExcelWizPro, Excel data cleaning, Excel shortcuts" />
   <meta name="author" content="ExcelWizPro" />
 
-  <style>
-    :root {
-      --brand-blue: #003A8C;
-      --brand-blue-dark: #0D3D8F;
-      --brand-accent: #5684C9;
-      --brand-bg-light: #F1F4F8;
-      --brand-soft-blue: #9EADD4;
-      --brand-text: #1a1a1a;
-    }
+<style>
+  :root {
+    --brand-blue: #003A8C;
+    --brand-blue-dark: #0D3D8F;
+    --brand-accent: #5684C9;
+    --brand-bg-light: #F1F4F8;
+    --brand-soft-blue: #9EADD4;
+    --brand-text: #1a1a1a;
+  }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Segoe UI, Arial, sans-serif;
-      background: var(--brand-bg-light);
-      color: var(--brand-text);
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Segoe UI, Arial, sans-serif;
+    background: var(--brand-bg-light);
+    color: var(--brand-text);
+  }
 
-    header {
-      background: var(--brand-blue);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
+  header {
+    background: var(--brand-blue);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
 
-    h1 { font-size: 3rem; margin: 0; }
-    p.subtitle { font-size: 1.25rem; opacity: 0.9; }
+  h1 { font-size: 3rem; margin: 0; }
+  p.subtitle { font-size: 1.25rem; opacity: 0.9; }
 
-    .container { max-width: 980px; margin: 40px auto; padding: 0 20px; }
+  .container { max-width: 980px; margin: 40px auto; padding: 0 20px; }
 
-    .signup-box {
-      background: white;
-      padding: 35px;
-      border-radius: 12px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-      text-align: center;
-      border: 1px solid var(--brand-soft-blue);
-    }
+  .signup-box {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    border: 1px solid var(--brand-soft-blue);
+  }
 
-    input[type="email"] {
-      width: 70%; padding: 14px; border-radius: 8px; border: 1px solid #ccc;
-    }
+  input[type="email"] {
+    width: 70%; padding: 14px; border-radius: 8px; border: 1px solid #ccc;
+  }
 
-    button {
-      padding: 14px 24px;
-      background: var(--brand-blue);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    button:hover { background: var(--brand-blue-dark); }
+  button {
+    padding: 14px 24px;
+    background: var(--brand-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  button:hover { background: var(--brand-blue-dark); }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 25px;
-      margin-top: 40px;
-    }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
 
-    .feature-card {
-      background: white;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border: 1px solid var(--brand-soft-blue);
-      transition: 0.25s ease;
-    }
+  .feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border: 1px solid var(--brand-soft-blue);
+    transition: 0.25s ease;
+  }
 
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-      border-color: var(--brand-accent);
-    }
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    border-color: var(--brand-accent);
+  }
 
-    /* 📌 FIXED IMAGE SIZING — prevents overflow / distortion */
-    .feature-card img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 15px;
-    }
+  /* ✅ REAL FIX — images stay inside cards and scale down safely */
+  .feature-card img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+  }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      margin-top: 60px;
-      color: #555;
-    }
-  </style>
+  footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+    color: #555;
+  }
+
+</style>
+
 </head>
 
 <body>
