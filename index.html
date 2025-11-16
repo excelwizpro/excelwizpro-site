@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/assets/icon-64.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO Tags -->
+  <title>ExcelWizPro – AI‑Powered Excel Automation Add‑In | Coming Soon</title>
+  <meta name="description" content="ExcelWizPro is the AI‑powered Excel productivity add‑in that automates formulas, cleans data, and boosts workflow efficiency. Register for early access and get your first month free." />
+  <meta name="keywords" content="Excel add-in, Excel automation, AI Excel tool, Excel formula generator, Excel productivity, ExcelWizPro, Excel data cleaning, Excel shortcuts" />
+  <meta name="author" content="ExcelWizPro" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ExcelWizPro – AI‑Powered Excel Automation Add‑In" />
+  <meta property="og:description" content="Automate formulas, clean data, and enhance Excel workflows using AI. Get 1 month free when you register early." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.excelwizpro.com" />
+  <meta property="og:image" content="https://www.excelwizpro.com/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ExcelWizPro – AI Excel Add‑In" />
+  <meta name="twitter:description" content="Excel automation made simple. Sign up for early access and get 1 month free." />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ExcelWizPro",
+    "description": "AI-powered Excel add-in for formula automation, data cleaning, and advanced productivity.",
+    "operatingSystem": "Windows, macOS",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "GBP",
+      "description": "Early access – 1 month free on release"
+    }
+  }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Segoe UI, Arial, sans-serif;
+      background: #f3f4f6;
+      color: #1a1a1a;
+    }
+    header {
+      background: var(--brand-blue);
+      color: white;
+      padding: 30px 20px; /* narrowed header */
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    p.subtitle {
+      font-size: 1.25rem;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .signup-box {
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    input[type="email"] {
+      width: 70%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 14px 24px;
+      background: #0050ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #003bcc;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
+      gap: 25px;
+      margin-top: 40px;
+      justify-items: center;
+    }
+    .feature-card {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      width: 100%;
+      max-width: 420px;
+      min-height: 220px; /* equal height */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+      border-color: var(--brand-accent);
+    }
+    .feature-card img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--brand-blue-dark);
+      font-size: 1.25rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+      color: #555;
+    }
+  
+
+/* ===================== */
+/* BRAND COLOR PALETTE   */
+/* ===================== */
+:root {
+  --brand-blue: #0050ff;
+  --brand-blue-dark: #003bcc;
+  --brand-accent: #00c8ff;
+  --brand-grey-100: #f3f4f6;
+  --brand-grey-800: #1a1a1a;
+  --brand-grey-600: #555;
+  --brand-bg: #ffffff;
+  --brand-text: #1a1a1a;
+}
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-bg: #0d1117;
+    --brand-text: #e6e6e6;
+    --brand-grey-100: #161b22;
+    --brand-grey-600: #9ca3af;
+  }
+  body {
+    background: var(--brand-bg) !important;
+    color: var(--brand-text) !important;
+  }
+  header {
+    background: var(--brand-blue-dark) !important;
+    color: white !important;
+  }
+  .signup-box, .feature-card {
+    background: #161b22 !important;
+    color: var(--brand-text) !important;
+    box-shadow: 0 4px 30px rgba(255,255,255,0.04) !important;
+  }
+  footer {
+    color: var(--brand-grey-600) !important;
+  }
+}
+
+/* BUTTONS UPDATED FOR BRAND */
+button {
+  background: var(--brand-blue);
+  transition: 0.3s ease;
+}
+button:hover {
+  background: var(--brand-blue-dark);
+}
+
+/* Updated elements to use brand colors */
+body {
+  background: var(--brand-grey-100);
+  color: var(--brand-text);
+}
+header {
+  background: var(--brand-blue);
+}
+.signup-box {
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.feature-card h3 {
+  color: var(--brand-blue-dark);
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <img src="/assets/icon-64.png" alt="ExcelWizPro Logo" style="width:96px;height:96px;margin-bottom:25px;" />
+    <img src="/assets/icon-64.png" alt="ExcelWizPro Logo" style="width:64px;height:64px;margin-bottom:20px;" />
+    <h1>ExcelWizPro</h1>
+    <p class="subtitle">AI‑Powered Excel Automation — Coming Soon</p>
+    <p style="opacity:0.85;margin-top:8px;">A professional Excel add‑in built with a native Microsoft feel.</p>
+  </header>
+
+  <!-- Hero Art Section -->
+  <div style="text-align:center; margin:30px 0;">
+    <img src="/assets/hero.png" alt="ExcelWizPro Hero Art" style="max-width:100%; height:auto; border-radius:12px;" />
+  </div>
+
+  <div class="container">
+    <div class="signup-box">
+      <h2>Get 1 Month Free on Release</h2>
+      <p>Register early and be among the first to experience AI‑driven Excel automation.</p>
+      <form action="https://your-email-handler.com/register" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <br>
+        <button type="submit" style="margin-top:10px;">Join the Waitlist</button>
+      </form>
+      <p style="margin-top:10px;font-size:0.9rem;color:#555;">Join now and get 1 month free on release.</p>
+    </div>
+
+    <h2 style="margin-top:50px;">Designed for Excel Power Users</h2>
+
+    <h2 style="text-align:center;margin-top:60px;font-size:2rem;color:var(--brand-blue);">Powerful Features</h2>
+    <div class="features">
+      <div class="feature-card">
+        <img src="/assets/feature-graphic.png" alt="Feature Graphic" style="width:64px;height:64px;margin-bottom:12px;" />
+        $1
+      </div>
+
+      <div class="feature-card">
+        <img src="/assets/feature-graphic.png" alt="Feature Graphic" style="width:64px;height:64px;margin-bottom:12px;" />
+        $1
+      </div>
+
+      <div class="feature-card">
+        <img src="/assets/feature-graphic.png" alt="Feature Graphic" style="width:64px;height:64px;margin-bottom:12px;" />
+        $1
+      </div>
+
+      <div class="feature-card">
+        <img src="/assets/feature-graphic.png" alt="Feature Graphic" style="width:64px;height:64px;margin-bottom:12px;" />
+        $1
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <img src="/assets/icon-64.png" alt="ExcelWizPro Logo" style="width:48px;height:48px;margin-bottom:10px;display:block;margin-left:auto;margin-right:auto;" />
+    © 2025 ExcelWizPro. All rights reserved.<br>
+    ExcelWizPro is an independent product and is not affiliated with Microsoft Corporation.
+  </footer>
+</body>
+</html>
