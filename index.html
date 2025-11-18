@@ -19,6 +19,19 @@
       --brand-bg-light: #F1F4F8;
       --brand-soft-blue: #9EADD4;
       --brand-text: #1a1a1a;
+
+      /* Add-in preview theme */
+      --preview-primary: #1a68ff;
+      --preview-primary-hover: #1458d2;
+      --preview-primary-light: #c4d8ff;
+      --preview-navy-dark: #0d1b33;
+      --preview-navy: #102347;
+      --preview-navy-light: #1c3768;
+      --preview-success: #0f7b0f;
+      --preview-border: #d1d1d1;
+      --preview-radius: 10px;
+      --preview-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      --preview-shadow-strong: 0 4px 16px rgba(0,0,0,0.18);
     }
 
     body {
@@ -55,6 +68,9 @@
       padding: 14px;
       border-radius: 8px;
       border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 1rem;
+      box-sizing: border-box;
     }
 
     button {
@@ -65,6 +81,7 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 1rem;
+      font-family: inherit;
     }
     button:hover { background: var(--brand-blue-dark); }
 
@@ -117,6 +134,488 @@
     .trust h3 {
       color: var(--brand-blue);
     }
+
+    /* ======================================================
+       LIVE ADD-IN PREVIEW — Taskpane Simulation
+       ====================================================== */
+
+    .addin-preview-wrapper {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .addin-preview-wrapper h2 {
+      color: var(--brand-blue);
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .addin-preview-subtext {
+      margin-bottom: 22px;
+      color: #555;
+      font-size: 0.96rem;
+    }
+
+    .addin-preview-inner {
+      display: flex;
+      justify-content: center;
+    }
+
+    .addin-card {
+      width: 440px;
+      background: rgba(255,255,255,0.97);
+      border-radius: 14px;
+      box-shadow: var(--preview-shadow-strong);
+      padding: 1.4rem 1.6rem 1.5rem 1.6rem;
+      box-sizing: border-box;
+    }
+
+    /* Header */
+    .addin-header {
+      text-align: center;
+      margin-bottom: 1.1rem;
+      padding: 1.3rem 0 1rem 0;
+      border-radius: 16px;
+      background: linear-gradient(
+        145deg,
+        var(--preview-navy-light),
+        var(--preview-navy),
+        var(--preview-navy-dark)
+      );
+      box-shadow:
+        0 4px 16px rgba(0,0,0,0.25),
+        inset 0 0 18px rgba(255,255,255,0.06);
+    }
+
+    .addin-logo-glow {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 0.7rem auto;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 10%, #bfd1ff 90%);
+      padding: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 12px rgba(125,175,255,0.75),
+        0 0 26px rgba(80,120,255,0.55),
+        inset 0 0 10px rgba(255,255,255,0.9);
+    }
+
+    .addin-logo-glow img {
+      width: 52px;
+      height: 52px;
+    }
+
+    .addin-title {
+      margin: 0.15rem 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .addin-subtitle {
+      margin-top: -0.2rem;
+      font-size: 0.9rem;
+      color: #d3e0ff;
+      letter-spacing: 0.35px;
+    }
+
+    .addin-divider {
+      opacity: 0.18;
+      border: none;
+      border-bottom: 1px solid #444;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Inside card labels + inputs */
+    .addin-card label {
+      margin-top: 0.7rem;
+      margin-bottom: 0.2rem;
+      display: inline-block;
+      font-weight: 600;
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+    .addin-card select,
+    .addin-card textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.92rem;
+      border-radius: var(--preview-radius);
+      border: 1px solid #bbb;
+      padding: 0.55rem 0.65rem;
+      box-sizing: border-box;
+      background: #fff;
+      transition: 0.2s border, 0.2s box-shadow;
+      color: #222;
+    }
+
+    .addin-card select:focus,
+    .addin-card textarea:focus {
+      border-color: var(--preview-primary);
+      box-shadow: 0 0 0 3px var(--preview-primary-light);
+      outline: none;
+    }
+
+    .addin-card textarea {
+      min-height: 70px;
+      resize: vertical;
+      line-height: 1.4;
+    }
+
+    .addin-btn-row {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .addin-btn-primary {
+      background: var(--preview-primary);
+      color: #fff;
+      border-radius: var(--preview-radius);
+      border: none;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      width: 100%;
+    }
+
+    .addin-btn-primary:hover {
+      background: var(--preview-primary-hover);
+    }
+
+    .addin-btn-primary:active {
+      transform: scale(0.97);
+    }
+
+    .addin-btn-secondary {
+      background: #f3f3f3;
+      color: #333;
+      border-radius: var(--preview-radius);
+      border: 1px solid #ccc;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .addin-btn-secondary:hover {
+      background: #e9e9e9;
+    }
+
+    .addin-output-label {
+      margin-top: 0.8rem;
+      font-weight: 600;
+      color: #333;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .addin-copy-btn {
+      background: transparent;
+      border: none;
+      color: var(--preview-primary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 0.1rem 0.3rem;
+      text-decoration: underline;
+    }
+
+    .addin-output-box {
+      margin-top: 0.4rem;
+      border-radius: var(--preview-radius);
+      padding: 0.65rem 0.75rem;
+      background: #fafafa;
+      border: 1px solid #ccc;
+      font-family: Consolas, monospace;
+      font-size: 0.9rem;
+      min-height: 60px;
+      text-align: left;
+      white-space: pre-wrap;
+      line-height: 1.45;
+      color: #111;
+      box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+    }
+
+    .addin-output-placeholder {
+      color: #888;
+      font-style: italic;
+    }
+
+    /* Lightweight toast for preview */
+    .preview-toast {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--preview-primary-hover);
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      opacity: 0;
+      pointer-events: none;
+      animation: previewToastFade 2.2s ease forwards;
+      z-index: 9999;
+    }
+
+    @keyframes previewToastFade {
+      0%   { opacity: 0; transform: translate(-50%, 18px); }
+      12%  { opacity: 1; transform: translate(-50%, 0); }
+      80%  { opacity: 1; transform: translate(-50%, 0); }
+      100% { opacity: 0; transform: translate(-50%, 18px); }
+    }
+
+    /* ================= MANIFEST DOWNLOAD ================= */
+    .download-section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .download-btn-large {
+      padding: 16px 34px;
+      background: var(--brand-blue);
+      color: white;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      margin-top: 20px;
+      transition: 0.25s ease;
+    }
+
+    .download-btn-large:hover {
+      background: var(--brand-blue-dark);
+      transform: translateY(-3px);
+    }
+
+    /* ================= VIDEO DEMO ================= */
+    .video-demo {
+      max-width: 900px;
+      margin: 60px auto 40px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .video-demo h2 {
+      color: var(--brand-blue);
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .video-demo p {
+      max-width: 720px;
+      margin: 0 auto 18px;
+      color: #444;
+      font-size: 1rem;
+    }
+
+    .video-frame {
+      max-width: 820px;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 26px rgba(0,0,0,0.15);
+      background: #000;
+    }
+
+    .video-frame video,
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ================= INSTALL WIZARD ================= */
+    .install-wizard {
+      max-width: 900px;
+      margin: 60px auto 70px;
+      padding: 20px;
+    }
+
+    .install-wizard h2 {
+      text-align: center;
+      color: var(--brand-blue);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .install-wizard-intro {
+      text-align: center;
+      color: #444;
+      max-width: 720px;
+      margin: 0 auto 26px;
+      font-size: 0.98rem;
+    }
+
+    .wizard-platform-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .wizard-tab {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--brand-soft-blue);
+      background: white;
+      color: #333;
+      cursor: pointer;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wizard-tab span.icon {
+      font-size: 1.1rem;
+    }
+
+    .wizard-tab.active {
+      background: var(--brand-blue);
+      color: white;
+      border-color: var(--brand-blue-dark);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    }
+
+    .wizard-card {
+      background: white;
+      border-radius: 14px;
+      border: 1px solid var(--brand-soft-blue);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      padding: 24px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .wizard-step-indicator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .wizard-step-indicator span.current-step {
+      font-weight: 600;
+      color: var(--brand-blue);
+    }
+
+    .wizard-step-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+    .wizard-step-text {
+      font-size: 0.96rem;
+      color: #444;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .wizard-bullets {
+      margin: 0 0 16px 18px;
+      padding: 0;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .wizard-bullets li {
+      margin-bottom: 6px;
+    }
+
+    .wizard-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .wizard-btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wizard-btn-prev {
+      background: #f3f3f3;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    .wizard-btn-prev:hover {
+      background: #e9e9e9;
+    }
+
+    .wizard-btn-next {
+      background: var(--brand-blue);
+      color: white;
+      border: none;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+    }
+
+    .wizard-btn-next:hover {
+      background: var(--brand-blue-dark);
+    }
+
+    .wizard-progress-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 6px;
+    }
+
+    .wizard-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #d8d8d8;
+    }
+
+    .wizard-dot.active {
+      background: var(--brand-blue);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+      .addin-card {
+        width: 100%;
+      }
+      input[type="email"] {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -151,11 +650,139 @@
     </div>
   </div>
 
-  <!-- ================= ACTUAL UI PREVIEW ================= -->
-  <div style="max-width:900px;margin:50px auto;padding:20px;text-align:center;">
-    <h2 style="color:var(--brand-blue);font-size:2rem;margin-bottom:20px;">Live Add-In Preview</h2>
-    <img src="/assets/ui-preview.png" alt="ExcelWizPro UI" style="max-width:100%;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.08);" />
-  </div>
+  <!-- ================= LIVE ADD-IN PREVIEW (SIMULATED UI) ================= -->
+  <section class="addin-preview-wrapper">
+    <h2>Live Add-In Preview</h2>
+    <p class="addin-preview-subtext">
+      This is a simulated version of the ExcelWizPro taskpane — it looks and feels like the real add-in inside Excel.
+    </p>
+
+    <div class="addin-preview-inner">
+      <div class="addin-card">
+        <!-- Premium header -->
+        <header class="addin-header">
+          <div class="addin-logo-glow">
+            <img src="/assets/icon-64.png" alt="ExcelWizPro Logo">
+          </div>
+          <h3 class="addin-title">ExcelWizPro</h3>
+          <p class="addin-subtitle">AI Formula Generator for Excel</p>
+        </header>
+
+        <hr class="addin-divider">
+
+        <!-- Sheet select -->
+        <label for="preview-sheet">Active Worksheet:</label>
+        <select id="preview-sheet">
+          <option>Sheet1</option>
+          <option>Sheet2</option>
+          <option>Sales_2025</option>
+        </select>
+
+        <!-- Query -->
+        <label for="preview-query">Describe your formula goal:</label>
+        <textarea id="preview-query" placeholder="e.g., sum sales where region = &quot;west&quot;"></textarea>
+
+        <!-- Buttons -->
+        <div class="addin-btn-row">
+          <button type="button" class="addin-btn-primary" id="preview-generate">
+            Generate Formula
+          </button>
+          <button type="button" class="addin-btn-secondary" id="preview-clear">
+            Clear
+          </button>
+        </div>
+
+        <!-- Output -->
+        <div class="addin-output-label">
+          <span>Result:</span>
+          <button type="button" class="addin-copy-btn" id="preview-copy">Copy</button>
+        </div>
+        <div class="addin-output-box" id="preview-output">
+          <span class="addin-output-placeholder">Your AI-generated formula will appear here.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MANIFEST DOWNLOAD ================= -->
+  <section class="download-section">
+    <h2 style="color:var(--brand-blue);font-size:2rem;margin-bottom:10px;">
+      Download the ExcelWizPro Manifest
+    </h2>
+    <p style="font-size:1.1rem;color:#444;max-width:700px;margin:0 auto;">
+      Install ExcelWizPro into Excel Desktop, Web, or Mac using our manifest file.
+    </p>
+
+    <button class="download-btn-large" id="download-manifest-btn">
+      ⬇ Download Manifest (excelwizpro.xml)
+    </button>
+
+    <p style="margin-top:14px;font-size:0.9rem;color:#666;">
+      This file is required to sideload ExcelWizPro before launch.
+    </p>
+  </section>
+
+  <!-- ================= VIDEO DEMO ================= -->
+  <section class="video-demo">
+    <h2>See ExcelWizPro in Action</h2>
+    <p>
+      Watch a quick walkthrough of how ExcelWizPro generates formulas, maps columns, and automates your workflows directly inside Excel.
+    </p>
+
+    <div class="video-frame">
+      <!-- Replace src with your actual video or YouTube embed -->
+      <video controls poster="/assets/video-poster.png">
+        <source src="/assets/excelwizpro-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- Or, if you prefer YouTube:
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" 
+              frameborder="0" allowfullscreen></iframe>
+      -->
+    </div>
+  </section>
+
+  <!-- ================= INSTALL WIZARD ================= -->
+  <section class="install-wizard">
+    <h2>How to Install ExcelWizPro</h2>
+    <p class="install-wizard-intro">
+      Follow the guided steps below. Choose your platform, then click through the wizard to complete setup.
+    </p>
+
+    <div class="wizard-platform-tabs">
+      <button class="wizard-tab active" data-platform="desktop">
+        <span class="icon">💻</span> Excel Desktop
+      </button>
+      <button class="wizard-tab" data-platform="web">
+        <span class="icon">🌐</span> Excel Web
+      </button>
+      <button class="wizard-tab" data-platform="mac">
+        <span class="icon">🍏</span> Excel for Mac
+      </button>
+    </div>
+
+    <div class="wizard-card">
+      <div class="wizard-step-indicator">
+        <span class="current-step" id="wizard-step-label"></span>
+        <span id="wizard-platform-label"></span>
+      </div>
+
+      <div class="wizard-step-title" id="wizard-step-title"></div>
+      <div class="wizard-step-text" id="wizard-step-text"></div>
+
+      <ul class="wizard-bullets" id="wizard-step-bullets"></ul>
+
+      <div class="wizard-controls">
+        <button type="button" class="wizard-btn wizard-btn-prev" id="wizard-prev">
+          ◀ Previous
+        </button>
+        <div class="wizard-progress-dots" id="wizard-dots"></div>
+        <button type="button" class="wizard-btn wizard-btn-next" id="wizard-next">
+          Next ▶
+        </button>
+      </div>
+    </div>
+  </section>
 
   <!-- ================= HERO IMAGE ================= -->
   <div style="text-align:center; margin:30px 0;">
@@ -223,44 +850,366 @@
 
   <!-- ================= FOOTER ================= -->
   <footer>
-    <img src="/assets/icon-64.png" style="width:48px;height:48px;" />
+    <img src="/assets/icon-64.png" style="width:48px;height:48px;" alt="ExcelWizPro icon" />
     <p>© 2025 ExcelWizPro — Not affiliated with Microsoft.</p>
   </footer>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // ================= WAITLIST FORM =================
   const form = document.querySelector("form");
-  if (!form) return;
+  if (form) {
+    const validateEmail = (email) => {
+      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,10}$/;
+      return regex.test(email);
+    };
 
-  const validateEmail = (email) => {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,10}$/;
-    return regex.test(email);
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailInput = form.querySelector("input[type='email']");
+      const email = emailInput.value.trim();
+
+      if (!email) return alert("Please enter your email.");
+      if (!validateEmail(email)) return alert("Enter a valid email.");
+
+      try {
+        const res = await fetch("https://excelwizpro-finalapi.onrender.com/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+        alert(data.message || "You're on the waitlist!");
+        if (data.success) form.reset();
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong.");
+      }
+    });
+  }
+
+  // ================= LIVE ADD-IN PREVIEW LOGIC =================
+  const sheetSelect = document.getElementById("preview-sheet");
+  const queryInput = document.getElementById("preview-query");
+  const generateBtn = document.getElementById("preview-generate");
+  const clearBtn = document.getElementById("preview-clear");
+  const outputBox = document.getElementById("preview-output");
+  const copyBtn = document.getElementById("preview-copy");
+
+  const showPreviewToast = (message) => {
+    const t = document.createElement("div");
+    t.className = "preview-toast";
+    t.textContent = message;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2300);
   };
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  if (generateBtn && outputBox && queryInput && sheetSelect) {
+    generateBtn.addEventListener("click", () => {
+      const q = queryInput.value.trim();
+      const sheet = sheetSelect.value || "Sheet1";
 
-    const emailInput = form.querySelector("input[type='email']");
-    const email = emailInput.value.trim();
+      let formula;
 
-    if (!email) return alert("Please enter your email.");
-    if (!validateEmail(email)) return alert("Enter a valid email.");
+      if (!q) {
+        formula = `=LET(
+  data, ${sheet}!B2:B1000,
+  "Describe your goal above to see a sample formula"
+)`;
+      } else if (/sum|total/i.test(q) && /region/i.test(q)) {
+        formula =
+`=LET(
+  region, ${sheet}!A2:A1000,
+  sales,  ${sheet}!B2:B1000,
+  SUM(FILTER(sales, region="west"))
+)`;
+      } else if (/unique|distinct/i.test(q)) {
+        formula =
+`=LET(
+  vals, ${sheet}!A2:A1000,
+  UNIQUE(vals)
+)`;
+      } else {
+        formula =
+`=LET(
+  data, ${sheet}!A2:D1000,
+  /* ExcelWizPro will generate a task-specific formula based on your query */
+  "Example query: ${q}"
+)`;
+      }
 
-    try {
-      const res = await fetch("https://excelwizpro-finalapi.onrender.com/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
-      });
+      outputBox.textContent = formula;
+    });
+  }
 
-      const data = await res.json();
-      alert(data.message || "You're on the waitlist!");
-      if (data.success) form.reset();
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong.");
+  if (clearBtn && outputBox && queryInput) {
+    clearBtn.addEventListener("click", () => {
+      queryInput.value = "";
+      outputBox.innerHTML = '<span class="addin-output-placeholder">Your AI-generated formula will appear here.</span>';
+    });
+  }
+
+  if (copyBtn && outputBox) {
+    copyBtn.addEventListener("click", async () => {
+      const text = outputBox.textContent.trim();
+      if (!text) {
+        showPreviewToast("Nothing to copy yet.");
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+        showPreviewToast("Formula copied to clipboard");
+      } catch {
+        showPreviewToast("Could not copy formula");
+      }
+    });
+  }
+
+  // ================= MANIFEST DOWNLOAD BUTTON =================
+  const manifestBtn = document.getElementById("download-manifest-btn");
+  if (manifestBtn) {
+    manifestBtn.addEventListener("click", () => {
+      // Adjust this path if your manifest lives elsewhere
+      window.location.href = "/excelwizpro.xml";
+    });
+  }
+
+  // ================= INSTALL WIZARD LOGIC =================
+  const wizardTabs = document.querySelectorAll(".wizard-tab");
+  const stepLabel = document.getElementById("wizard-step-label");
+  const platformLabel = document.getElementById("wizard-platform-label");
+  const stepTitleEl = document.getElementById("wizard-step-title");
+  const stepTextEl = document.getElementById("wizard-step-text");
+  const bulletsEl = document.getElementById("wizard-step-bullets");
+  const prevBtn = document.getElementById("wizard-prev");
+  const nextBtn = document.getElementById("wizard-next");
+  const dotsContainer = document.getElementById("wizard-dots");
+
+  const wizardData = {
+    desktop: {
+      label: "Excel Desktop",
+      steps: [
+        {
+          title: "Download the manifest",
+          text: "First, download the ExcelWizPro manifest file to your computer.",
+          bullets: [
+            "Click the “Download Manifest” button above.",
+            "Save <strong>excelwizpro.xml</strong> somewhere easy to find (e.g., Downloads or Desktop)."
+          ]
+        },
+        {
+          title: "Open the Add-ins dialog",
+          text: "Now open Excel and navigate to the add-in upload flow.",
+          bullets: [
+            "Open Excel (Windows).",
+            "Go to <strong>Insert → My Add-ins</strong>.",
+            "Click on <strong>Upload My Add-in</strong>."
+          ]
+        },
+        {
+          title: "Upload the manifest",
+          text: "Tell Excel where the ExcelWizPro manifest file lives.",
+          bullets: [
+            "Browse to the folder where you saved <strong>excelwizpro.xml</strong>.",
+            "Select the file and confirm.",
+            "Excel will validate and load the add-in."
+          ]
+        },
+        {
+          title: "Pin ExcelWizPro",
+          text: "Make ExcelWizPro easy to access for everyday use.",
+          bullets: [
+            "Once loaded, open <strong>ExcelWizPro</strong> from the taskpane.",
+            "Pin the taskpane (pushpin icon) so it opens automatically with your workbook."
+          ]
+        },
+        {
+          title: "Start automating formulas",
+          text: "You’re ready to use ExcelWizPro in your real workbooks.",
+          bullets: [
+            "Open a workbook with data.",
+            "Describe your formula goal in the taskpane.",
+            "Click <strong>Generate Formula</strong> and insert into Excel."
+          ]
+        }
+      ]
+    },
+    web: {
+      label: "Excel Web",
+      steps: [
+        {
+          title: "Download the manifest",
+          text: "Even on the web, the manifest file is how Excel learns about your add-in.",
+          bullets: [
+            "Click the “Download Manifest” button above.",
+            "Save <strong>excelwizpro.xml</strong> locally (it may go to Downloads)."
+          ]
+        },
+        {
+          title: "Open Excel Online",
+          text: "Use Excel in the browser via Office.com or your organization’s portal.",
+          bullets: [
+            "Go to <strong>office.com</strong> and open Excel Online.",
+            "Open a workbook where you want to test ExcelWizPro."
+          ]
+        },
+        {
+          title: "Upload the add-in",
+          text: "Use the Office Add-ins gallery to sideload ExcelWizPro.",
+          bullets: [
+            "Navigate to <strong>Insert → Office Add-ins</strong>.",
+            "Choose <strong>Upload My Add-in</strong>.",
+            "Select the downloaded <strong>excelwizpro.xml</strong> file."
+          ]
+        },
+        {
+          title: "Launch ExcelWizPro",
+          text: "Make sure the taskpane opens and stays visible.",
+          bullets: [
+            "Once added, ExcelWizPro will appear in the Add-ins list.",
+            "Open it and resize the taskpane if necessary.",
+            "Pin it so it’s available as you switch sheets."
+          ]
+        },
+        {
+          title: "Use it in your browser",
+          text: "You can now generate formulas directly in Excel Online.",
+          bullets: [
+            "Type a natural-language request into ExcelWizPro.",
+            "Click <strong>Generate</strong> to see the formula.",
+            "Copy or insert the formula into a cell."
+          ]
+        }
+      ]
+    },
+    mac: {
+      label: "Excel for Mac",
+      steps: [
+        {
+          title: "Download the manifest",
+          text: "Start by downloading the manifest file on your Mac.",
+          bullets: [
+            "Click the “Download Manifest” button above.",
+            "Save <strong>excelwizpro.xml</strong> to your Mac (e.g., Downloads)."
+          ]
+        },
+        {
+          title: "Open Excel for Mac",
+          text: "Use the Insert menu to access add-ins on macOS.",
+          bullets: [
+            "Open Excel on your Mac.",
+            "Go to <strong>Insert → Add-ins</strong>."
+          ]
+        },
+        {
+          title: "Upload the manifest",
+          text: "Tell Excel where the ExcelWizPro manifest is stored.",
+          bullets: [
+            "Choose <strong>Upload My Add-in</strong> (or similar option).",
+            "Select <strong>excelwizpro.xml</strong> from your Downloads folder.",
+            "Confirm to sideload the add-in."
+          ]
+        },
+        {
+          title: "Open the taskpane",
+          text: "Make sure ExcelWizPro is visible and pinned.",
+          bullets: [
+            "Launch ExcelWizPro from the Add-ins section.",
+            "Drag or resize the pane if needed.",
+            "Use the pin icon to keep it open."
+          ]
+        },
+        {
+          title: "Start using ExcelWizPro",
+          text: "You’re now ready to generate formulas on your Mac.",
+          bullets: [
+            "Open a workbook with data.",
+            "Describe your formula goal in ExcelWizPro.",
+            "Generate and paste formulas like you would on Windows."
+          ]
+        }
+      ]
     }
-  });
+  };
+
+  let currentPlatform = "desktop";
+  let currentStep = 0;
+
+  function renderWizard() {
+    const data = wizardData[currentPlatform];
+    const steps = data.steps;
+    const step = steps[currentStep];
+
+    stepLabel.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+    platformLabel.textContent = data.label;
+
+    stepTitleEl.textContent = step.title;
+    stepTextEl.textContent = step.text;
+
+    bulletsEl.innerHTML = "";
+    step.bullets.forEach((b) => {
+      const li = document.createElement("li");
+      li.innerHTML = b;
+      bulletsEl.appendChild(li);
+    });
+
+    // Update dots
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < steps.length; i++) {
+      const dot = document.createElement("div");
+      dot.className = "wizard-dot" + (i === currentStep ? " active" : "");
+      dotsContainer.appendChild(dot);
+    }
+
+    // Button states/text
+    prevBtn.disabled = currentStep === 0;
+    prevBtn.style.opacity = currentStep === 0 ? 0.6 : 1;
+
+    if (currentStep === steps.length - 1) {
+      nextBtn.textContent = "Finish ✅";
+    } else {
+      nextBtn.textContent = "Next ▶";
+    }
+
+    // Highlight active tab
+    wizardTabs.forEach((tab) => {
+      tab.classList.toggle("active", tab.dataset.platform === currentPlatform);
+    });
+  }
+
+  if (wizardTabs.length && stepLabel && platformLabel) {
+    wizardTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        currentPlatform = tab.dataset.platform;
+        currentStep = 0;
+        renderWizard();
+      });
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        renderWizard();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const data = wizardData[currentPlatform];
+      const steps = data.steps;
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        renderWizard();
+      } else {
+        // Finished
+        showPreviewToast("You're ready to install ExcelWizPro on " + wizardData[currentPlatform].label + "!");
+      }
+    });
+
+    // Initial render
+    renderWizard();
+  }
 });
 </script>
 
