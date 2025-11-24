@@ -1,1217 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/assets/icon-64.png" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary SEO Tags -->
-  <title>ExcelWizPro – AI-Powered Excel Automation Add-In | Coming Soon</title>
-  <meta name="description" content="ExcelWizPro is an AI-powered Excel add-in that automates formulas, cleans data, and speeds up data processing. Perfect for analysts, finance teams, and Excel power users." />
-  <meta name="keywords" content="Excel add-in, Excel automation, AI Excel tool, Excel formula generator, Excel productivity, ExcelWizPro, Excel data cleaning" />
-  <meta name="author" content="ExcelWizPro" />
-
-  <style>
-    :root {
-      --brand-blue: #003A8C;
-      --brand-blue-dark: #0D3D8F;
-      --brand-accent: #5684C9;
-      --brand-bg-light: #F1F4F8;
-      --brand-soft-blue: #9EADD4;
-      --brand-text: #1a1a1a;
-
-      /* Add-in preview theme */
-      --preview-primary: #1a68ff;
-      --preview-primary-hover: #1458d2;
-      --preview-primary-light: #c4d8ff;
-      --preview-navy-dark: #0d1b33;
-      --preview-navy: #102347;
-      --preview-navy-light: #1c3768;
-      --preview-success: #0f7b0f;
-      --preview-border: #d1d1d1;
-      --preview-radius: 10px;
-      --preview-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      --preview-shadow-strong: 0 4px 16px rgba(0,0,0,0.18);
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Segoe UI, Arial, sans-serif;
-      background: var(--brand-bg-light);
-      color: var(--brand-text);
-    }
-
-    header {
-      background: var(--brand-blue);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    h1 { font-size: 3rem; margin: 0; }
-    p.subtitle { font-size: 1.25rem; opacity: 0.9; }
-
-    .container { max-width: 980px; margin: 40px auto; padding: 0 20px; }
-
-    .signup-box {
-      background: white;
-      padding: 35px;
-      border-radius: 12px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
-      text-align: center;
-      border: 1px solid var(--brand-soft-blue);
-    }
-
-    input[type="email"] {
-      width: 70%;
-      padding: 14px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-family: inherit;
-      font-size: 1rem;
-      box-sizing: border-box;
-    }
-
-    button {
-      padding: 14px 24px;
-      background: var(--brand-blue);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-    button:hover { background: var(--brand-blue-dark); }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 25px;
-      margin-top: 40px;
-    }
-
-    .feature-card {
-      background: white;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border: 1px solid var(--brand-soft-blue);
-      transition: 0.25s ease;
-      text-align: center;
-    }
-
-    .feature-card img {
-      width: 100%;
-      max-width: 140px;
-      height: 140px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-      border-color: var(--brand-accent);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      margin-top: 60px;
-      color: #555;
-    }
-
-    /* Trust boosters */
-    .trust {
-      max-width: 900px;
-      margin: 60px auto;
-      text-align: center;
-      color: #333;
-    }
-
-    .trust h3 {
-      color: var(--brand-blue);
-    }
-
-    /* ======================================================
-       LIVE ADD-IN PREVIEW — Taskpane Simulation
-       ====================================================== */
-
-    .addin-preview-wrapper {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .addin-preview-wrapper h2 {
-      color: var(--brand-blue);
-      font-size: 2rem;
-      margin-bottom: 14px;
-    }
-
-    .addin-preview-subtext {
-      margin-bottom: 22px;
-      color: #555;
-      font-size: 0.96rem;
-    }
-
-    .addin-preview-inner {
-      display: flex;
-      justify-content: center;
-    }
-
-    .addin-card {
-      width: 440px;
-      background: rgba(255,255,255,0.97);
-      border-radius: 14px;
-      box-shadow: var(--preview-shadow-strong);
-      padding: 1.4rem 1.6rem 1.5rem 1.6rem;
-      box-sizing: border-box;
-    }
-
-    /* Header */
-    .addin-header {
-      text-align: center;
-      margin-bottom: 1.1rem;
-      padding: 1.3rem 0 1rem 0;
-      border-radius: 16px;
-      background: linear-gradient(
-        145deg,
-        var(--preview-navy-light),
-        var(--preview-navy),
-        var(--preview-navy-dark)
-      );
-      box-shadow:
-        0 4px 16px rgba(0,0,0,0.25),
-        inset 0 0 18px rgba(255,255,255,0.06);
-    }
-
-    .addin-logo-glow {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 0.7rem auto;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ffffff 10%, #bfd1ff 90%);
-      padding: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        0 0 12px rgba(125,175,255,0.75),
-        0 0 26px rgba(80,120,255,0.55),
-        inset 0 0 10px rgba(255,255,255,0.9);
-    }
-
-    .addin-logo-glow img {
-      width: 52px;
-      height: 52px;
-    }
-
-    .addin-title {
-      margin: 0.15rem 0;
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: #fff;
-    }
-
-    .addin-subtitle {
-      margin-top: -0.2rem;
-      font-size: 0.9rem;
-      color: #d3e0ff;
-      letter-spacing: 0.35px;
-    }
-
-    .addin-divider {
-      opacity: 0.18;
-      border: none;
-      border-bottom: 1px solid #444;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    /* Inside card labels + inputs */
-    .addin-card label {
-      margin-top: 0.7rem;
-      margin-bottom: 0.2rem;
-      display: inline-block;
-      font-weight: 600;
-      color: #333;
-      font-size: 0.9rem;
-    }
-
-    .addin-card select,
-    .addin-card textarea {
-      width: 100%;
-      font-family: inherit;
-      font-size: 0.92rem;
-      border-radius: var(--preview-radius);
-      border: 1px solid #bbb;
-      padding: 0.55rem 0.65rem;
-      box-sizing: border-box;
-      background: #fff;
-      transition: 0.2s border, 0.2s box-shadow;
-      color: #222;
-    }
-
-    .addin-card select:focus,
-    .addin-card textarea:focus {
-      border-color: var(--preview-primary);
-      box-shadow: 0 0 0 3px var(--preview-primary-light);
-      outline: none;
-    }
-
-    .addin-card textarea {
-      min-height: 70px;
-      resize: vertical;
-      line-height: 1.4;
-    }
-
-    .addin-btn-row {
-      margin-top: 0.8rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .addin-btn-primary {
-      background: var(--preview-primary);
-      color: #fff;
-      border-radius: var(--preview-radius);
-      border: none;
-      padding: 0.7rem 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-      width: 100%;
-    }
-
-    .addin-btn-primary:hover {
-      background: var(--preview-primary-hover);
-    }
-
-    .addin-btn-primary:active {
-      transform: scale(0.97);
-    }
-
-    .addin-btn-secondary {
-      background: #f3f3f3;
-      color: #333;
-      border-radius: var(--preview-radius);
-      border: 1px solid #ccc;
-      padding: 0.6rem 1rem;
-      font-size: 0.9rem;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .addin-btn-secondary:hover {
-      background: #e9e9e9;
-    }
-
-    .addin-output-label {
-      margin-top: 0.8rem;
-      font-weight: 600;
-      color: #333;
-      font-size: 0.9rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .addin-copy-btn {
-      background: transparent;
-      border: none;
-      color: var(--preview-primary);
-      font-size: 0.8rem;
-      cursor: pointer;
-      padding: 0.1rem 0.3rem;
-      text-decoration: underline;
-    }
-
-    .addin-output-box {
-      margin-top: 0.4rem;
-      border-radius: var(--preview-radius);
-      padding: 0.65rem 0.75rem;
-      background: #fafafa;
-      border: 1px solid #ccc;
-      font-family: Consolas, monospace;
-      font-size: 0.9rem;
-      min-height: 60px;
-      text-align: left;
-      white-space: pre-wrap;
-      line-height: 1.45;
-      color: #111;
-      box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
-    }
-
-    .addin-output-placeholder {
-      color: #888;
-      font-style: italic;
-    }
-
-    /* Lightweight toast for preview */
-    .preview-toast {
-      position: fixed;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--preview-primary-hover);
-      color: #fff;
-      padding: 0.5rem 1.2rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-      opacity: 0;
-      pointer-events: none;
-      animation: previewToastFade 2.2s ease forwards;
-      z-index: 9999;
-    }
-
-    @keyframes previewToastFade {
-      0%   { opacity: 0; transform: translate(-50%, 18px); }
-      12%  { opacity: 1; transform: translate(-50%, 0); }
-      80%  { opacity: 1; transform: translate(-50%, 0); }
-      100% { opacity: 0; transform: translate(-50%, 18px); }
-    }
-
-    /* ================= MANIFEST DOWNLOAD ================= */
-    .download-section {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .download-btn-large {
-      padding: 16px 34px;
-      background: var(--brand-blue);
-      color: white;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-      margin-top: 20px;
-      transition: 0.25s ease;
-    }
-
-    .download-btn-large:hover {
-      background: var(--brand-blue-dark);
-      transform: translateY(-3px);
-    }
-
-    /* ================= VIDEO DEMO ================= */
-    .video-demo {
-      max-width: 900px;
-      margin: 60px auto 40px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .video-demo h2 {
-      color: var(--brand-blue);
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .video-demo p {
-      max-width: 720px;
-      margin: 0 auto 18px;
-      color: #444;
-      font-size: 1rem;
-    }
-
-    .video-frame {
-      max-width: 820px;
-      margin: 0 auto;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 6px 26px rgba(0,0,0,0.15);
-      background: #000;
-    }
-
-    .video-frame video,
-    .video-frame iframe {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* ================= INSTALL WIZARD ================= */
-    .install-wizard {
-      max-width: 900px;
-      margin: 60px auto 70px;
-      padding: 20px;
-    }
-
-    .install-wizard h2 {
-      text-align: center;
-      color: var(--brand-blue);
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    .install-wizard-intro {
-      text-align: center;
-      color: #444;
-      max-width: 720px;
-      margin: 0 auto 26px;
-      font-size: 0.98rem;
-    }
-
-    .wizard-platform-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
-
-    .wizard-tab {
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid var(--brand-soft-blue);
-      background: white;
-      color: #333;
-      cursor: pointer;
-      font-size: 0.92rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .wizard-tab span.icon {
-      font-size: 1.1rem;
-    }
-
-    .wizard-tab.active {
-      background: var(--brand-blue);
-      color: white;
-      border-color: var(--brand-blue-dark);
-      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-    }
-
-    .wizard-card {
-      background: white;
-      border-radius: 14px;
-      border: 1px solid var(--brand-soft-blue);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      padding: 24px;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .wizard-step-indicator {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .wizard-step-indicator span.current-step {
-      font-weight: 600;
-      color: var(--brand-blue);
-    }
-
-    .wizard-step-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #222;
-    }
-
-    .wizard-step-text {
-      font-size: 0.96rem;
-      color: #444;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .wizard-bullets {
-      margin: 0 0 16px 18px;
-      padding: 0;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    .wizard-bullets li {
-      margin-bottom: 6px;
-    }
-
-    .wizard-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .wizard-btn {
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .wizard-btn-prev {
-      background: #f3f3f3;
-      color: #333;
-      border: 1px solid #ccc;
-    }
-
-    .wizard-btn-prev:hover {
-      background: #e9e9e9;
-    }
-
-    .wizard-btn-next {
-      background: var(--brand-blue);
-      color: white;
-      border: none;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.18);
-    }
-
-    .wizard-btn-next:hover {
-      background: var(--brand-blue-dark);
-    }
-
-    .wizard-progress-dots {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      justify-content: center;
-      margin-top: 6px;
-    }
-
-    .wizard-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #d8d8d8;
-    }
-
-    .wizard-dot.active {
-      background: var(--brand-blue);
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      .features {
-        grid-template-columns: 1fr;
-      }
-      .addin-card {
-        width: 100%;
-      }
-      input[type="email"] {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- ================= HEADER ================= -->
-  <header>
-    <img src="/assets/icon-64.png" alt="Logo" style="width:96px;height:96px;margin-bottom:20px;" />
-    <h1>ExcelWizPro</h1>
-    <p class="subtitle">AI-Powered Excel Automation — Coming Soon</p>
-  </header>
-
-  <!-- ================= BLURB ================= -->
-  <section style="max-width:900px;margin:30px auto 40px;padding:20px;text-align:center;">
-    <h2 style="color:var(--brand-blue);font-size:2rem;margin-bottom:10px;">What Is ExcelWizPro?</h2>
-    <p style="font-size:1.1rem;line-height:1.6;max-width:800px;margin:0 auto;color:#333;">
-      ExcelWizPro is an AI-powered Excel add-in that automates formula creation, accelerates complex calculations,
-      and removes repetitive tasks. Built for analysts, finance professionals, accountants, and everyday users, 
-      ExcelWizPro boosts accuracy, eliminates manual work, and transforms how you manage data, reporting, 
-      forecasting, and day-to-day spreadsheet operations.
-    </p>
-  </section>
-
-  <!-- ================= SIGNUP ================= -->
-  <div class="container">
-    <div class="signup-box">
-      <h2>Get 1 Month Free on Release</h2>
-      <p>Join early to unlock AI-assisted Excel superpowers.</p>
-      <form>
-        <input type="email" placeholder="Enter your email" required />
-        <br><button style="margin-top:10px;">Join the Waitlist</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ================= LIVE ADD-IN PREVIEW (SIMULATED UI) ================= -->
-  <section class="addin-preview-wrapper">
-    <h2>Live Add-In Preview</h2>
-    <p class="addin-preview-subtext">
-      This is a simulated version of the ExcelWizPro taskpane — it looks and feels like the real add-in inside Excel.
-    </p>
-
-    <div class="addin-preview-inner">
-      <div class="addin-card">
-        <!-- Premium header -->
-        <header class="addin-header">
-          <div class="addin-logo-glow">
-            <img src="/assets/icon-64.png" alt="ExcelWizPro Logo">
-          </div>
-          <h3 class="addin-title">ExcelWizPro</h3>
-          <p class="addin-subtitle">AI Formula Generator for Excel</p>
-        </header>
-
-        <hr class="addin-divider">
-
-        <!-- Sheet select -->
-        <label for="preview-sheet">Active Worksheet:</label>
-        <select id="preview-sheet">
-          <option>Sheet1</option>
-          <option>Sheet2</option>
-          <option>Sales_2025</option>
-        </select>
-
-        <!-- Query -->
-        <label for="preview-query">Describe your formula goal:</label>
-        <textarea id="preview-query" placeholder="e.g., sum sales where region = &quot;west&quot;"></textarea>
-
-        <!-- Buttons -->
-        <div class="addin-btn-row">
-          <button type="button" class="addin-btn-primary" id="preview-generate">
-            Generate Formula
-          </button>
-          <button type="button" class="addin-btn-secondary" id="preview-clear">
-            Clear
-          </button>
-        </div>
-
-        <!-- Output -->
-        <div class="addin-output-label">
-          <span>Result:</span>
-          <button type="button" class="addin-copy-btn" id="preview-copy">Copy</button>
-        </div>
-        <div class="addin-output-box" id="preview-output">
-          <span class="addin-output-placeholder">Your AI-generated formula will appear here.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= MANIFEST DOWNLOAD ================= -->
-  <section class="download-section">
-    <h2 style="color:var(--brand-blue);font-size:2rem;margin-bottom:10px;">
-      Download the ExcelWizPro Manifest
-    </h2>
-    <p style="font-size:1.1rem;color:#444;max-width:700px;margin:0 auto;">
-      Install ExcelWizPro into Excel Desktop, Web, or Mac using our manifest file.
-    </p>
-
-    <button class="download-btn-large" id="download-manifest-btn">
-      ⬇ Download Manifest (excelwizpro.xml)
-    </button>
-
-    <p style="margin-top:14px;font-size:0.9rem;color:#666;">
-      This file is required to sideload ExcelWizPro before launch.
-    </p>
-  </section>
-
-  <!-- ================= VIDEO DEMO ================= -->
-  <section class="video-demo">
-    <h2>See ExcelWizPro in Action</h2>
-    <p>
-      Watch a quick walkthrough of how ExcelWizPro generates formulas, maps columns, and automates your workflows directly inside Excel.
-    </p>
-
-    <div class="video-frame">
-      <!-- Replace src with your actual video or YouTube embed -->
-      <video controls poster="/assets/video-poster.png">
-        <source src="/assets/excelwizpro-demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <!-- Or, if you prefer YouTube:
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" 
-              frameborder="0" allowfullscreen></iframe>
-      -->
-    </div>
-  </section>
-
-  <!-- ================= INSTALL WIZARD ================= -->
-  <section class="install-wizard">
-    <h2>How to Install ExcelWizPro</h2>
-    <p class="install-wizard-intro">
-      Follow the guided steps below. Choose your platform, then click through the wizard to complete setup.
-    </p>
-
-    <div class="wizard-platform-tabs">
-      <button class="wizard-tab active" data-platform="desktop">
-        <span class="icon">💻</span> Excel Desktop
-      </button>
-      <button class="wizard-tab" data-platform="web">
-        <span class="icon">🌐</span> Excel Web
-      </button>
-      <button class="wizard-tab" data-platform="mac">
-        <span class="icon">🍏</span> Excel for Mac
-      </button>
-    </div>
-
-    <div class="wizard-card">
-      <div class="wizard-step-indicator">
-        <span class="current-step" id="wizard-step-label"></span>
-        <span id="wizard-platform-label"></span>
-      </div>
-
-      <div class="wizard-step-title" id="wizard-step-title"></div>
-      <div class="wizard-step-text" id="wizard-step-text"></div>
-
-      <ul class="wizard-bullets" id="wizard-step-bullets"></ul>
-
-      <div class="wizard-controls">
-        <button type="button" class="wizard-btn wizard-btn-prev" id="wizard-prev">
-          ◀ Previous
-        </button>
-        <div class="wizard-progress-dots" id="wizard-dots"></div>
-        <button type="button" class="wizard-btn wizard-btn-next" id="wizard-next">
-          Next ▶
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= HERO IMAGE ================= -->
-  <div style="text-align:center; margin:30px 0;">
-    <img src="/assets/hero.png" alt="Hero" style="max-width:100%; border-radius:12px;" />
-  </div>
-
-  <!-- ================= FEATURES ================= -->
-  <div class="container">
-    <h2 style="text-align:center;margin-top:60px;color:var(--brand-blue);font-size:2rem;">Powerful Features</h2>
-
-    <div class="features">
-      <div class="feature-card">
-        <img src="/assets/feature-ai.png" alt="AI Formula Automation" />
-        <h3>AI Formula Automation</h3>
-        <p>Generate formulas instantly using natural language.</p>
-      </div>
-
-      <div class="feature-card">
-        <img src="/assets/feature-mapping.png" alt="Column Mapping" />
-        <h3>Intelligent Column Mapping</h3>
-        <p>Automatically match and detect spreadsheet fields.</p>
-      </div>
-
-      <div class="feature-card">
-        <img src="/assets/feature-backend.png" alt="Accelerated Processing" />
-        <h3>Accelerated Processing</h3>
-        <p>Lightning-fast calculations powered by a hybrid AI engine.</p>
-      </div>
-
-      <div class="feature-card">
-        <img src="/assets/feature-cleaning.png" alt="One-Click Cleaning" />
-        <h3>One-Click Data Cleaning</h3>
-        <p>Fix formatting, remove duplicates, tidy data instantly.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= BLOG ================= -->
-  <section id="blog" style="max-width:900px;margin:60px auto;padding:20px;">
-    <h2 style="text-align:center;color:var(--brand-blue);font-size:2rem;">ExcelWizPro Blog</h2>
-    <p style="text-align:center;max-width:700px;margin:0 auto 24px;">
-      Insights on AI-powered Excel workflows, automation strategies, and productivity techniques.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;">
-      <div class="feature-card">
-        <h3>How AI Transforms Excel Workflows</h3>
-        <p>Discover how AI eliminates manual formulas and accelerates analysis.</p>
-      </div>
-      <div class="feature-card">
-        <h3>The Fastest Way to Generate Excel Formulas</h3>
-        <p>Generate accurate formulas 10× faster with natural-language prompts.</p>
-      </div>
-      <div class="feature-card">
-        <h3>10 Excel Tasks You Should Automate in 2025</h3>
-        <p>Save hours weekly by automating these common workflows.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TRUST BOOSTERS ================= -->
-  <div class="trust">
-    <h3>Trusted by Analysts, Finance Teams & Excel Power Users</h3>
-    <p>Secure • No data stored • Enterprise-ready • Microsoft-focused architecture</p>
-  </div>
-
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    <img src="/assets/icon-64.png" style="width:48px;height:48px;" alt="ExcelWizPro icon" />
-    <p>© 2025 ExcelWizPro — Not affiliated with Microsoft.</p>
-  </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // ================= WAITLIST FORM =================
-  const form = document.querySelector("form");
-  if (form) {
-    const validateEmail = (email) => {
-      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,10}$/;
-      return regex.test(email);
+  <title>ExcelWizPro – Your AI Assistant Inside Excel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="ExcelWizPro is an AI assistant that lives inside Excel. Describe the insight you need in plain English – it builds the formulas, filters, and analysis directly in your workbook."
+  />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["system-ui", "ui-sans-serif", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+          },
+          colors: {
+            brand: {
+              DEFAULT: "#2563eb",
+              light: "#60a5fa",
+              dark: "#1d4ed8",
+            },
+            ink: {
+              DEFAULT: "#111827",
+              soft: "#4b5563",
+            },
+          },
+          boxShadow: {
+            soft: "0 18px 60px rgba(15, 23, 42, 0.12)",
+          },
+        },
+      },
     };
+  </script>
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  <!-- Favicon (replace with your own file when ready) -->
+  <link rel="icon" href="/favicon.ico" />
+</head>
+<body class="bg-white text-ink font-sans antialiased">
+  <!-- Page wrapper -->
+  <div class="min-h-screen flex flex-col">
 
-      const emailInput = form.querySelector("input[type='email']");
-      const email = emailInput.value.trim();
+    <!-- NAVBAR -->
+    <header class="border-b border-slate-100">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo / Brand -->
+          <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-xl bg-brand text-white flex items-center justify-center text-lg font-semibold shadow-md">
+              E
+            </div>
+            <div class="flex flex-col leading-tight">
+              <span class="font-semibold text-ink text-sm sm:text-base">ExcelWizPro</span>
+              <span class="text-xs text-ink-soft hidden sm:block">
+                AI Assistant for Excel Power Users
+              </span>
+            </div>
+          </div>
 
-      if (!email) return alert("Please enter your email.");
-      if (!validateEmail(email)) return alert("Enter a valid email.");
+          <!-- Nav links -->
+          <nav class="hidden md:flex items-center gap-8 text-sm">
+            <a href="#how-it-works" class="text-ink-soft hover:text-ink transition">How it works</a>
+            <a href="#features" class="text-ink-soft hover:text-ink transition">Features</a>
+            <a href="#who-for" class="text-ink-soft hover:text-ink transition">Who it's for</a>
+            <a href="#pricing" class="text-ink-soft hover:text-ink transition">Pricing</a>
+          </nav>
 
-      try {
-        const res = await fetch("https://excelwizpro-finalapi.onrender.com/subscribe", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email })
-        });
+          <!-- CTA -->
+          <div class="hidden md:flex items-center gap-3">
+            <a
+              href="#early-access"
+              class="text-sm text-ink-soft hover:text-ink transition"
+            >
+              Talk to us
+            </a>
+            <a
+              href="#download"
+              class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-brand text-white text-sm font-medium shadow-sm hover:bg-brand-dark transition"
+            >
+              Get Early Access
+            </a>
+          </div>
 
-        const data = await res.json();
-        alert(data.message || "You're on the waitlist!");
-        if (data.success) form.reset();
-      } catch (err) {
-        console.error(err);
-        alert("Something went wrong.");
-      }
-    });
-  }
+          <!-- Mobile menu button -->
+          <button
+            id="mobileMenuButton"
+            class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-ink-soft hover:text-ink hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 7h16M4 12h16M4 17h16"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
 
-  // ================= LIVE ADD-IN PREVIEW LOGIC =================
-  const sheetSelect = document.getElementById("preview-sheet");
-  const queryInput = document.getElementById("preview-query");
-  const generateBtn = document.getElementById("preview-generate");
-  const clearBtn = document.getElementById("preview-clear");
-  const outputBox = document.getElementById("preview-output");
-  const copyBtn = document.getElementById("preview-copy");
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden pb-4 border-t border-slate-100">
+          <nav class="pt-3 flex flex-col gap-2 text-sm">
+            <a href="#how-it-works" class="block px-1 py-1 text-ink-soft hover:text-ink">How it works</a>
+            <a href="#features" class="block px-1 py-1 text-ink-soft hover:text-ink">Features</a>
+            <a href="#who-for" class="block px-1 py-1 text-ink-soft hover:text-ink">Who it's for</a>
+            <a href="#pricing" class="block px-1 py-1 text-ink-soft hover:text-ink">Pricing</a>
+            <a href="#early-access" class="block px-1 py-1 text-ink-soft hover:text-ink">Talk to us</a>
+          </nav>
+          <div class="pt-3 flex gap-3">
+            <a
+              href="#download"
+              class="inline-flex flex-1 items-center justify-center px-4 py-2 rounded-lg bg-brand text-white text-sm font-medium shadow-sm hover:bg-brand-dark transition"
+            >
+              Get Early Access
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-  const showPreviewToast = (message) => {
-    const t = document.createElement("div");
-    t.className = "preview-toast";
-    t.textContent = message;
-    document.body.appendChild(t);
-    setTimeout(() => t.remove(), 2300);
-  };
+    <!-- MAIN -->
+    <main class="flex-1">
+      <!-- HERO -->
+      <section class="border-b border-slate-100 bg-gradient-to-b from-white via-white to-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Left: Copy -->
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs text-ink-soft mb-4">
+              <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Private beta for Excel power users
+            </div>
 
-  if (generateBtn && outputBox && queryInput && sheetSelect) {
-    generateBtn.addEventListener("click", () => {
-      const q = queryInput.value.trim();
-      const sheet = sheetSelect.value || "Sheet1";
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink tracking-tight mb-4">
+              Your AI&nbsp;assistant
+              <span class="block mt-1">built directly into Excel.</span>
+            </h1>
 
-      let formula;
+            <p class="text-sm sm:text-base text-ink-soft leading-relaxed mb-6 max-w-xl">
+              Stop wrestling with formulas, filters, and endless helper columns.
+              With ExcelWizPro, you describe the insight you need in plain English —
+              it builds the formulas and analysis directly in your workbook.
+            </p>
 
-      if (!q) {
-        formula = `=LET(
-  data, ${sheet}!B2:B1000,
-  "Describe your goal above to see a sample formula"
-)`;
-      } else if (/sum|total/i.test(q) && /region/i.test(q)) {
-        formula =
-`=LET(
-  region, ${sheet}!A2:A1000,
-  sales,  ${sheet}!B2:B1000,
-  SUM(FILTER(sales, region="west"))
-)`;
-      } else if (/unique|distinct/i.test(q)) {
-        formula =
-`=LET(
-  vals, ${sheet}!A2:A1000,
-  UNIQUE(vals)
-)`;
-      } else {
-        formula =
-`=LET(
-  data, ${sheet}!A2:D1000,
-  /* ExcelWizPro will generate a task-specific formula based on your query */
-  "Example query: ${q}"
-)`;
-      }
+            <ul class="text-sm text-ink-soft space-y-2 mb-7">
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-4 w-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                <span>No copy-paste to a web app — lives inside Excel.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-4 w-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                <span>Understands your workbook structure across all sheets.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-4 w-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px] font-bold">✓</span>
+                <span>Ideal for planners, analysts, supervisors, and managers.</span>
+              </li>
+            </ul>
 
-      outputBox.textContent = formula;
-    });
-  }
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+              <a
+                id="download"
+                href="#early-access"
+                class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-brand text-white text-sm font-medium shadow-soft hover:bg-brand-dark transition"
+              >
+                Request Early Access
+              </a>
 
-  if (clearBtn && outputBox && queryInput) {
-    clearBtn.addEventListener("click", () => {
-      queryInput.value = "";
-      outputBox.innerHTML = '<span class="addin-output-placeholder">Your AI-generated formula will appear here.</span>';
-    });
-  }
+              <button
+                type="button"
+                class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-sm text-ink-soft hover:border-slate-300 hover:text-ink transition"
+                onclick="document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' })"
+              >
+                See how it works
+              </button>
+            </div>
 
-  if (copyBtn && outputBox) {
-    copyBtn.addEventListener("click", async () => {
-      const text = outputBox.textContent.trim();
-      if (!text) {
-        showPreviewToast("Nothing to copy yet.");
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(text);
-        showPreviewToast("Formula copied to clipboard");
-      } catch {
-        showPreviewToast("Could not copy formula");
-      }
-    });
-  }
+            <p class="text-[11px] text-ink-soft/80 max-w-md">
+              Every analyst, every planner, every supervisor, every manager —
+              gets the power of an expert Excel assistant built directly into their workbook.
+              No coding. No formulas. No training. Just answers.
+            </p>
+          </div>
 
-  // ================= MANIFEST DOWNLOAD BUTTON =================
-  const manifestBtn = document.getElementById("download-manifest-btn");
-  if (manifestBtn) {
-    manifestBtn.addEventListener("click", () => {
-      // Adjust this path if your manifest lives elsewhere
-      window.location.href = "/excelwizpro.xml";
-    });
-  }
+          <!-- Right: Mockup -->
+          <div class="relative">
+            <div class="absolute -inset-8 bg-gradient-to-tr from-brand/5 via-brand-light/10 to-emerald-200/40 blur-2xl opacity-70 pointer-events-none"></div>
+            <div class="relative bg-white border border-slate-100 rounded-2xl shadow-soft overflow-hidden">
+              <div class="flex">
+                <!-- Fake Excel grid preview -->
+                <div class="hidden sm:block w-2/3 border-r border-slate-100 bg-slate-50/60">
+                  <div class="flex items-center justify-between px-3 py-2 border-b border-slate-100 bg-slate-100/60 text-[11px] text-ink-soft/80">
+                    <span>Sample Workbook.xlsx</span>
+                    <span class="rounded-full bg-emerald-100 text-emerald-600 px-2 py-0.5 text-[10px]">
+                      Connected
+                    </span>
+                  </div>
+                  <div class="p-3">
+                    <div class="grid grid-cols-6 text-[10px] text-ink-soft">
+                      <div class="font-medium pb-1 border-b border-slate-200">Order ID</div>
+                      <div class="font-medium pb-1 border-b border-slate-200">Warehouse</div>
+                      <div class="font-medium pb-1 border-b border-slate-200">Route</div>
+                      <div class="font-medium pb-1 border-b border-slate-200">Picker</div>
+                      <div class="font-medium pb-1 border-b border-slate-200">HMIR1</div>
+                      <div class="font-medium pb-1 border-b border-slate-200">Qty</div>
 
-  // ================= INSTALL WIZARD LOGIC =================
-  const wizardTabs = document.querySelectorAll(".wizard-tab");
-  const stepLabel = document.getElementById("wizard-step-label");
-  const platformLabel = document.getElementById("wizard-platform-label");
-  const stepTitleEl = document.getElementById("wizard-step-title");
-  const stepTextEl = document.getElementById("wizard-step-text");
-  const bulletsEl = document.getElementById("wizard-step-bullets");
-  const prevBtn = document.getElementById("wizard-prev");
-  const nextBtn = document.getElementById("wizard-next");
-  const dotsContainer = document.getElementById("wizard-dots");
+                      <div class="py-1 border-b border-slate-100">100123</div>
+                      <div class="py-1 border-b border-slate-100">WH01</div>
+                      <div class="py-1 border-b border-slate-100">R-02-01</div>
+                      <div class="py-1 border-b border-slate-100">Alex</div>
+                      <div class="py-1 border-b border-slate-100">HMIR1</div>
+                      <div class="py-1 border-b border-slate-100 text-right">42</div>
 
-  const wizardData = {
-    desktop: {
-      label: "Excel Desktop",
-      steps: [
-        {
-          title: "Download the manifest",
-          text: "First, download the ExcelWizPro manifest file to your computer.",
-          bullets: [
-            "Click the “Download Manifest” button above.",
-            "Save <strong>excelwizpro.xml</strong> somewhere easy to find (e.g., Downloads or Desktop)."
-          ]
-        },
-        {
-          title: "Open the Add-ins dialog",
-          text: "Now open Excel and navigate to the add-in upload flow.",
-          bullets: [
-            "Open Excel (Windows).",
-            "Go to <strong>Insert → My Add-ins</strong>.",
-            "Click on <strong>Upload My Add-in</strong>."
-          ]
-        },
-        {
-          title: "Upload the manifest",
-          text: "Tell Excel where the ExcelWizPro manifest file lives.",
-          bullets: [
-            "Browse to the folder where you saved <strong>excelwizpro.xml</strong>.",
-            "Select the file and confirm.",
-            "Excel will validate and load the add-in."
-          ]
-        },
-        {
-          title: "Pin ExcelWizPro",
-          text: "Make ExcelWizPro easy to access for everyday use.",
-          bullets: [
-            "Once loaded, open <strong>ExcelWizPro</strong> from the taskpane.",
-            "Pin the taskpane (pushpin icon) so it opens automatically with your workbook."
-          ]
-        },
-        {
-          title: "Start automating formulas",
-          text: "You’re ready to use ExcelWizPro in your real workbooks.",
-          bullets: [
-            "Open a workbook with data.",
-            "Describe your formula goal in the taskpane.",
-            "Click <strong>Generate Formula</strong> and insert into Excel."
-          ]
-        }
-      ]
-    },
-    web: {
-      label: "Excel Web",
-      steps: [
-        {
-          title: "Download the manifest",
-          text: "Even on the web, the manifest file is how Excel learns about your add-in.",
-          bullets: [
-            "Click the “Download Manifest” button above.",
-            "Save <strong>excelwizpro.xml</strong> locally (it may go to Downloads)."
-          ]
-        },
-        {
-          title: "Open Excel Online",
-          text: "Use Excel in the browser via Office.com or your organization’s portal.",
-          bullets: [
-            "Go to <strong>office.com</strong> and open Excel Online.",
-            "Open a workbook where you want to test ExcelWizPro."
-          ]
-        },
-        {
-          title: "Upload the add-in",
-          text: "Use the Office Add-ins gallery to sideload ExcelWizPro.",
-          bullets: [
-            "Navigate to <strong>Insert → Office Add-ins</strong>.",
-            "Choose <strong>Upload My Add-in</strong>.",
-            "Select the downloaded <strong>excelwizpro.xml</strong> file."
-          ]
-        },
-        {
-          title: "Launch ExcelWizPro",
-          text: "Make sure the taskpane opens and stays visible.",
-          bullets: [
-            "Once added, ExcelWizPro will appear in the Add-ins list.",
-            "Open it and resize the taskpane if necessary.",
-            "Pin it so it’s available as you switch sheets."
-          ]
-        },
-        {
-          title: "Use it in your browser",
-          text: "You can now generate formulas directly in Excel Online.",
-          bullets: [
-            "Type a natural-language request into ExcelWizPro.",
-            "Click <strong>Generate</strong> to see the formula.",
-            "Copy or insert the formula into a cell."
-          ]
-        }
-      ]
-    },
-    mac: {
-      label: "Excel for Mac",
-      steps: [
-        {
-          title: "Download the manifest",
-          text: "Start by downloading the manifest file on your Mac.",
-          bullets: [
-            "Click the “Download Manifest” button above.",
-            "Save <strong>excelwizpro.xml</strong> to your Mac (e.g., Downloads)."
-          ]
-        },
-        {
-          title: "Open Excel for Mac",
-          text: "Use the Insert menu to access add-ins on macOS.",
-          bullets: [
-            "Open Excel on your Mac.",
-            "Go to <strong>Insert → Add-ins</strong>."
-          ]
-        },
-        {
-          title: "Upload the manifest",
-          text: "Tell Excel where the ExcelWizPro manifest is stored.",
-          bullets: [
-            "Choose <strong>Upload My Add-in</strong> (or similar option).",
-            "Select <strong>excelwizpro.xml</strong> from your Downloads folder.",
-            "Confirm to sideload the add-in."
-          ]
-        },
-        {
-          title: "Open the taskpane",
-          text: "Make sure ExcelWizPro is visible and pinned.",
-          bullets: [
-            "Launch ExcelWizPro from the Add-ins section.",
-            "Drag or resize the pane if needed.",
-            "Use the pin icon to keep it open."
-          ]
-        },
-        {
-          title: "Start using ExcelWizPro",
-          text: "You’re now ready to generate formulas on your Mac.",
-          bullets: [
-            "Open a workbook with data.",
-            "Describe your formula goal in ExcelWizPro.",
-            "Generate and paste formulas like you would on Windows."
-          ]
-        }
-      ]
-    }
-  };
+                      <div class="py-1 border-b border-slate-100">100124</div>
+                      <div class="py-1 border-b border-slate-100">WH01</div>
+                      <div class="py-1 border-b border-slate-100">R-02-01</div>
+                      <div class="py-1 border-b border-slate-100">Alex</div>
+                      <div class="py-1 border-b border-slate-100">HMIR1</div>
+                      <div class="py-1 border-b border-slate-100 text-right">35</div>
 
-  let currentPlatform = "desktop";
-  let currentStep = 0;
+                      <div class="py-1 border-b border-slate-100">100125</div>
+                      <div class="py-1 border-b border-slate-100">WH02</div>
+                      <div class="py-1 border-b border-slate-100">R-03-09</div>
+                      <div class="py-1 border-b border-slate-100">Sam</div>
+                      <div class="py-1 border-b border-slate-100">HMIR2</div>
+                      <div class="py-1 border-b border-slate-100 text-right">18</div>
+                    </div>
+                  </div>
+                </div>
 
-  function renderWizard() {
-    const data = wizardData[currentPlatform];
-    const steps = data.steps;
-    const step = steps[currentStep];
+                <!-- Taskpane mock -->
+                <div class="w-full sm:w-1/3 bg-white">
+                  <div class="px-3 py-2 border-b border-slate-100 flex items-center justify-between">
+                    <span class="text-[11px] font-medium text-ink">ExcelWizPro</span>
+                    <span class="text-[10px] text-ink-soft">Taskpane</span>
+                  </div>
+                  <div class="p-3 space-y-3">
+                    <label class="block">
+                      <span class="text-[10px] uppercase tracking-wide text-ink-soft mb-1 block">
+                        Ask in plain English
+                      </span>
+                      <div class="border border-slate-200 rounded-lg bg-slate-50/60 p-2 text-[11px] text-ink-soft">
+                        total unique warehouse orders confirmed by HMIR1 last quarter
+                      </div>
+                    </label>
 
-    stepLabel.textContent = `Step ${currentStep + 1} of ${steps.length}`;
-    platformLabel.textContent = data.label;
+                    <div class="rounded-lg border border-slate-100 bg-slate-50/60 p-2">
+                      <div class="flex items-center justify-between mb-1">
+                        <span class="text-[10px] uppercase tracking-wide text-ink-soft">
+                          Suggested formula
+                        </span>
+                        <span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                          AI-generated
+                        </span>
+                      </div>
+                      <div class="text-[10px] font-mono text-ink overflow-x-auto">
+                        =LET(..., COUNTA(UNIQUE(filtered_orders)))
+                      </div>
+                    </div>
 
-    stepTitleEl.textContent = step.title;
-    stepTextEl.textContent = step.text;
+                    <div class="rounded-lg border border-slate-100 bg-white p-2">
+                      <span class="block text-[10px] uppercase tracking-wide text-ink-soft mb-1">
+                        Explanation
+                      </span>
+                      <p class="text-[10px] text-ink-soft leading-snug">
+                        Counting unique <span class="font-semibold">warehouse_order</span>
+                        values where <span class="font-semibold">HMIR1</span> confirmed
+                        in the selected date range.
+                      </p>
+                    </div>
 
-    bulletsEl.innerHTML = "";
-    step.bullets.forEach((b) => {
-      const li = document.createElement("li");
-      li.innerHTML = b;
-      bulletsEl.appendChild(li);
-    });
+                    <button
+                      class="w-full inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-brand text-white text-[11px] font-medium hover:bg-brand-dark transition"
+                      type="button"
+                    >
+                      Insert into sheet
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -bottom-4 -left-4 hidden sm:block">
+              <div class="px-3 py-2 rounded-full bg-white/80 backdrop-blur border border-slate-100 shadow-soft text-[11px] text-ink-soft">
+                “It feels like an expert Excel analyst is sat beside me.”
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    // Update dots
-    dotsContainer.innerHTML = "";
-    for (let i = 0; i < steps.length; i++) {
-      const dot = document.createElement("div");
-      dot.className = "wizard-dot" + (i === currentStep ? " active" : "");
-      dotsContainer.appendChild(dot);
-    }
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works" class="py-12 sm:py-16 border-b border-slate-100 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-semibold text-ink mb-1">
+                How ExcelWizPro works inside your workbook
+              </h2>
+              <p class="text-sm text-ink-soft max-w-xl">
+                No export, no new system. ExcelWizPro understands your existing workbook:
+                sheets, headers, data types, and relationships.
+              </p>
+            </div>
+          </div>
 
-    // Button states/text
-    prevBtn.disabled = currentStep === 0;
-    prevBtn.style.opacity = currentStep === 0 ? 0.6 : 1;
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <div class="h-8 w-8 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-sm font-semibold mb-3">
+                1
+              </div>
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Scan your workbook</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                ExcelWizPro automatically indexes all sheets, columns, and common values
+                (dates, IDs, codes) to understand your data model.
+              </p>
+            </div>
 
-    if (currentStep === steps.length - 1) {
-      nextBtn.textContent = "Finish ✅";
-    } else {
-      nextBtn.textContent = "Next ▶";
-    }
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <div class="h-8 w-8 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-sm font-semibold mb-3">
+                2
+              </div>
+              <h3 class="text-sm font-semibold text-ink mb-1.5">You describe the outcome</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                Type what you need: “total picks per route last week”,
+                “unique orders by warehouse”, “flag late orders by SLA”.
+              </p>
+            </div>
 
-    // Highlight active tab
-    wizardTabs.forEach((tab) => {
-      tab.classList.toggle("active", tab.dataset.platform === currentPlatform);
-    });
-  }
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <div class="h-8 w-8 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-sm font-semibold mb-3">
+                3
+              </div>
+              <h3 class="text-sm font-semibold text-ink mb-1.5">We build the formula & logic</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                ExcelWizPro chooses the right columns, builds robust LET formulas,
+                handles filters, groupings, and suggests a ready-to-insert formula.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  if (wizardTabs.length && stepLabel && platformLabel) {
-    wizardTabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        currentPlatform = tab.dataset.platform;
-        currentStep = 0;
-        renderWizard();
+      <!-- FEATURES -->
+      <section id="features" class="py-12 sm:py-16 border-b border-slate-100 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-semibold text-ink mb-1">
+                Built for real-world operations workbooks
+              </h2>
+              <p class="text-sm text-ink-soft max-w-xl">
+                ExcelWizPro is designed for logistics, warehousing, supply chain, finance,
+                and any operation where Excel is the source of truth.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Workbook-wide awareness</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                We scan every sheet, understand repeated headers like <em>Warehouse</em>,
+                <em>Route</em>, <em>Date</em>, and intelligently disambiguate them.
+              </p>
+            </div>
+
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Value-based disambiguation</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                Type a value like <code>HMIR1</code> or a storage bin code —
+                ExcelWizPro shows you exactly which columns contain that value.
+              </p>
+            </div>
+
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Enterprise-grade formulas</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                Uses modern Excel functions (LET, FILTER, UNIQUE, BYROW) and
+                avoids brittle references, so formulas survive changes.
+              </p>
+            </div>
+
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">No data leaves Excel</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                Your workbook stays in Excel. We only use structural information
+                (headers, ranges) when generating logic.
+              </p>
+            </div>
+
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Power-user friendly</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                See and edit the generated formula. ExcelWizPro is an assistant,
+                not a black box.
+              </p>
+            </div>
+
+            <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Designed for teams</h3>
+              <p class="text-sm text-ink-soft leading-relaxed">
+                Ideal for teams where one advanced user can introduce ExcelWizPro
+                and everyone benefits from the same assistant.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO IT'S FOR -->
+      <section id="who-for" class="py-12 sm:py-16 border-b border-slate-100 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid md:grid-cols-2 gap-10">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-semibold text-ink mb-2">
+                For people who live in Excel every day
+              </h2>
+              <p class="text-sm text-ink-soft mb-4 max-w-lg">
+                ExcelWizPro is not a toy add-in. It’s built for real operators.
+              </p>
+
+              <ul class="space-y-2 text-sm text-ink-soft">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-4 w-4 rounded-full bg-brand/10 text-brand flex items-center justify-center text-[10px] font-semibold">
+                    •
+                  </span>
+                  <span><strong>Warehouse & logistics planners</strong> juggling pick waves, routes, and SLAs.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-4 w-4 rounded-full bg-brand/10 text-brand flex items-center justify-center text-[10px] font-semibold">
+                    •
+                  </span>
+                  <span><strong>Supply chain analysts</strong> building KPIs from messy operational workbooks.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-4 w-4 rounded-full bg-brand/10 text-brand flex items-center justify-center text-[10px] font-semibold">
+                    •
+                  </span>
+                  <span><strong>Supervisors & managers</strong> who need answers, not formula syntax.</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-4 w-4 rounded-full bg-brand/10 text-brand flex items-center justify-center text-[10px] font-semibold">
+                    •
+                  </span>
+                  <span><strong>Finance & ops teams</strong> where Excel is still the real reporting engine.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 sm:p-5 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">What kind of questions can you ask?</h3>
+              <p class="text-xs text-ink-soft mb-3">
+                A few real examples you might type into ExcelWizPro:
+              </p>
+              <ul class="space-y-2 text-xs text-ink-soft">
+                <li class="border border-slate-200 rounded-xl p-2 bg-white">
+                  “Total unique warehouse orders confirmed by HMIR1 last quarter.”
+                </li>
+                <li class="border border-slate-200 rounded-xl p-2 bg-white">
+                  “Count of late picks where actual_pick_time &gt; planned_pick_time by route.”
+                </li>
+                <li class="border border-slate-200 rounded-xl p-2 bg-white">
+                  “List all storage bins in WH01 where stock &gt; 0, grouped by product.”
+                </li>
+                <li class="border border-slate-200 rounded-xl p-2 bg-white">
+                  “Top 10 routes by total picks this week.”
+                </li>
+              </ul>
+              <p class="text-[11px] text-ink-soft mt-3">
+                ExcelWizPro translates these into robust Excel formulas you can trust and reuse.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING / EARLY ACCESS -->
+      <section id="pricing" class="py-12 sm:py-16 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-8">
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink mb-2">
+              Private beta pricing
+            </h2>
+            <p class="text-sm text-ink-soft max-w-2xl mx-auto">
+              We’re working closely with early teams to shape ExcelWizPro.
+              During private beta, access is kept intentionally limited so you get direct support.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Individual / Power User</h3>
+              <p class="text-xs text-ink-soft mb-4">
+                For analysts, planners, and power users who want the assistant in their own Excel.
+              </p>
+              <p class="text-2xl font-semibold text-ink mb-1">
+                £ / month
+                <span class="align-middle text-xs text-ink-soft ml-1">beta pricing</span>
+              </p>
+              <ul class="text-xs text-ink-soft space-y-1.5 mt-3 mb-4">
+                <li>• Excel add-in for one user</li>
+                <li>• All current features</li>
+                <li>• Priority feature suggestions</li>
+              </ul>
+              <a
+                href="#early-access"
+                class="inline-flex w-full items-center justify-center px-4 py-2 rounded-lg bg-brand text-white text-sm font-medium hover:bg-brand-dark transition"
+              >
+                Join the beta
+              </a>
+            </div>
+
+            <div class="bg-white border-2 border-brand rounded-2xl p-5 shadow-soft relative">
+              <div class="absolute -top-3 right-4 px-2 py-0.5 rounded-full bg-brand text-white text-[10px] font-medium shadow-sm">
+                Recommended
+              </div>
+              <h3 class="text-sm font-semibold text-ink mb-1.5">Team / Enterprise</h3>
+              <p class="text-xs text-ink-soft mb-4">
+                For teams and operations where Excel is mission-critical and you want to standardise on ExcelWizPro.
+              </p>
+              <p class="text-2xl font-semibold text-ink mb-1">
+                Let’s talk
+                <span class="align-middle text-xs text-ink-soft ml-1">per-seat or site licence</span>
+              </p>
+              <ul class="text-xs text-ink-soft space-y-1.5 mt-3 mb-4">
+                <li>• Multiple users or site licence</li>
+                <li>• Priority support & onboarding</li>
+                <li>• Input into roadmap for your workflows</li>
+              </ul>
+              <a
+                href="#early-access"
+                class="inline-flex w-full items-center justify-center px-4 py-2 rounded-lg bg-ink text-white text-sm font-medium hover:bg-black transition"
+              >
+                Book a conversation
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EARLY ACCESS FORM (simple mailto / placeholder) -->
+      <section id="early-access" class="py-12 sm:py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-slate-50 border border-slate-100 rounded-2xl p-5 sm:p-6 shadow-sm">
+            <h2 class="text-lg sm:text-xl font-semibold text-ink mb-1.5">
+              Interested in ExcelWizPro for your team?
+            </h2>
+            <p class="text-sm text-ink-soft mb-4">
+              Share a few details about how you use Excel today and we’ll reach out
+              with early-access options and a demo tailored to your workflows.
+            </p>
+
+            <!-- You can replace this with a real form backend later (Formspree, etc.) -->
+            <form
+              class="space-y-3"
+              action="mailto:info@excelwizpro.com"
+              method="post"
+              enctype="text/plain"
+            >
+              <div class="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-ink-soft mb-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-ink-soft mb-1">
+                    Work email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-ink-soft mb-1">
+                  Company / organisation
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-ink-soft mb-1">
+                  How do you use Excel today?
+                </label>
+                <textarea
+                  name="message"
+                  rows="3"
+                  class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand"
+                  placeholder="For example: daily warehouse performance, pick waves, route planning, finance reporting…"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-brand text-white text-sm font-medium hover:bg-brand-dark transition"
+              >
+                Send details
+              </button>
+
+              <p class="text-[11px] text-ink-soft mt-1">
+                Or email us directly at
+                <a href="mailto:info@excelwizpro.com" class="underline decoration-slate-300 hover:decoration-brand">
+                  info@excelwizpro.com
+                </a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-100 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-[11px] text-ink-soft">
+          © <span id="year"></span> ExcelWizPro. All rights reserved.
+        </p>
+        <div class="flex items-center gap-4 text-[11px] text-ink-soft">
+          <span>Excel assistant for serious power users.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Tiny JS for mobile nav + year -->
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    const mobileBtn = document.getElementById("mobileMenuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
       });
-    });
-
-    prevBtn.addEventListener("click", () => {
-      if (currentStep > 0) {
-        currentStep--;
-        renderWizard();
-      }
-    });
-
-    nextBtn.addEventListener("click", () => {
-      const data = wizardData[currentPlatform];
-      const steps = data.steps;
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        renderWizard();
-      } else {
-        // Finished
-        showPreviewToast("You're ready to install ExcelWizPro on " + wizardData[currentPlatform].label + "!");
-      }
-    });
-
-    // Initial render
-    renderWizard();
-  }
-});
-</script>
-
+    }
+  </script>
 </body>
 </html>
